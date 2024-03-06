@@ -1,44 +1,93 @@
 package user;
 
-
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class UserController {
-    UserService userService;
+
+    UserServiceImpl service;
 
     public UserController() {
-        this.userService = new UserServiceImpl();
+        this.service = UserServiceImpl.getInstance();
     }
-
-
 
     public String addUsers() {
-        return userService.addUsers();
+        return service.addUsers();
     }
 
-
-    public String countUser() {
-        return userService.countUser();
+    public String save(Scanner scanner) {
+        service.save(User.builder()
+                .username(scanner.next())
+                .ssn(scanner.next())
+                .address(scanner.next())
+                .phoneNumber(scanner.next())
+                .password(scanner.next())
+                .build());
+        return "회원가입 성공";
     }
 
-    public Map<String, User> getUserMap() {
-        return userService.getUserMap();
+    public List<User> findAll() {
+        return service.findAll();
     }
 
-    public String join(Scanner sc) {
-        return userService.join(User.builder()
-                .username(sc.next())
-                .password(sc.next())
+    public String login(Scanner scanner) {
+        return service.login(User.builder()
+                .username(scanner.next())
+                .password(scanner.next())
                 .build());
     }
 
-    public String login(Scanner sc) {
-        return userService.login(User.builder()
-                .username(sc.next())
-                .password(sc.next())
+    public Optional<User> findById(Scanner scanner) {
+        return service.findById(Long.parseLong(scanner.next()));
+    }
+
+    public String updatePassword(Scanner scanner) {
+        return service.updatePassword(User.builder()
+                .username(scanner.next())
+                .ssn(scanner.next())
+                .address(scanner.next())
+                .phoneNumber(scanner.next())
+                .password(scanner.next())
                 .build());
     }
 
+    public String delete(Scanner scanner) {
+        service.delete(User.builder()
+                .username(scanner.next())
+                .build());
+        return "회원삭제";
+    }
+
+    public Boolean existsById(Scanner scanner) {
+        return service.existsById(Long.parseLong(scanner.next()));
+    }
+
+    public List<?> findUsersByName(Scanner scanner) {
+        return service.findUsersByName(scanner.next());
+    }
+
+    public Map<String, ?> findUsersByNameFromMap(Scanner scanner) {
+        return service.findUsersByNameFromMap(scanner.next());
+    }
+
+    public List<?> findUsersByJob(Scanner scanner) {
+        return service.findUsersByJob(scanner.next());
+    }
+
+    public Map<String, ?> findUsersByJobFromMap(Scanner scanner) {
+        return service.findUsersByJobFromMap(scanner.next());
+    }
+
+    public String count() {
+        return service.count();
+    }
+    public Optional<User> getOne(Scanner scanner) {
+        return service.getOne(scanner.next());
+    }
+    public Map<String, ?> getUserMap(){
+        return service.getUserMap();
+    }
 
 }

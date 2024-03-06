@@ -2,6 +2,8 @@ package account;
 
 
 
+import enums.Messenger;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ public class AccountController {
         this.accountService = AccountServiceImpl.getInstance();
     }
 
-    public String createAccount(Scanner sc) {
+    public Messenger createAccount(Scanner sc) {
         return accountService.save(Account.builder()
                 .id(sc.nextLong())
                 .accountNumber(sc.next())
@@ -48,12 +50,11 @@ public class AccountController {
         return accountService.getBalance(sc.next());
     }
 
-    public String deleteAccount(Scanner sc) {
+    public String delete(Scanner sc) {
         return accountService.delete(Account.builder().accountNumber(sc.next()).build());
     }
 
     public List<?> getAccounts() {
         return accountService.findAll();
     }
-
 }

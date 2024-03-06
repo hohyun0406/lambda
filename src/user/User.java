@@ -1,40 +1,52 @@
 package user;
 import lombok.*;
 
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString
-
+@ToString(exclude = {"id"})
 public class User {
+    private Long id;
     private String username;
     private String password;
-    private String confirmPassword;
     private String name;
-    private String jmNumber;
-    private String callNumber;
+    private String ssn;
+    private String phoneNumber;
     private String address;
     private String job;
-
     private double height;
     private double weight;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Builder (builderMethodName = "builder")
-    public User(String username, String password, String confirmPassword, String name, String jmNumber, String callNumber, String address, String job, double height, double weight) {
+    @Builder(builderMethodName = "builder")
+    public User(String username, String password,
+                String name, String ssn, String phoneNumber,
+                String address, String job,
+                double height, double weight) {
         this.username = username;
         this.password = password;
-        this.confirmPassword = confirmPassword;
         this.name = name;
-        this.jmNumber = jmNumber;
-        this.callNumber = callNumber;
+        this.ssn = ssn;
+        this.phoneNumber = phoneNumber;
         this.address = address;
         this.job = job;
         this.height = height;
         this.weight = weight;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    @Override
+    public String toString() {
+        return "User{\n" +
+                "username='" + username + '\n' +
+                ", password='" + password + '\n' +
+                ", name='" + name + '\n' +
+                ", ssn='" + ssn + '\n' +
+                ", phoneNumber='" + phoneNumber + '\n' +
+                ", address='" + address + '\n' +
+                ", job='" + job + '\n' +
+                '}';
+    }
 }

@@ -14,7 +14,7 @@ public class Account {
     private Double balance;
     private Date transactionDate;
 
-    @Builder(builderMethodName = "builder")
+@Builder (builderMethodName = "builder")
     public Account(long id, String accountNumber, String accountHolder, double balance, Date transactionDate) {
         this.id = id;
         this.accountNumber = accountNumber;

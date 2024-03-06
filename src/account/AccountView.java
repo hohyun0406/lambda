@@ -28,7 +28,7 @@ public class AccountView {
                     break;
                 case "5":
                     System.out.println("Cancel Account");
-//                    System.out.println(accountController.cancelAccount(sc));
+                    System.out.println(accountController.delete(sc));
                     break;
                 case "6":
                     System.out.println("Account List");
