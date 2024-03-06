@@ -15,7 +15,7 @@ public class CrawlerView {
         while(true){
             System.out.println("[사용자메뉴] 0-종료\n " +
                     "1-벅스뮤직\n " +
-                    "2-로그인\n " +
+                    "2-멜론뮤직\n " +
                     "3-ID검색\n " +
                     "4-비번변경\n " +
                     "5-탈퇴\n " +
@@ -28,10 +28,10 @@ public class CrawlerView {
                     System.out.println("종료");return;
                 case "1":
                     System.out.println("1-벅스뮤직");
-                    Map<String, ?> map = controller.findBugsMusic(scanner);
-                    Iterator<Element> rank = (Iterator<Element>) map.get("rank");
-                    Iterator<Element> artist = (Iterator<Element>) map.get("artist");
-                    Iterator<Element> title = (Iterator<Element>) map.get("title");
+                    Map<String, ?> bugsMusic = controller.findBugsMusic(scanner);
+                    Iterator<Element> rank = (Iterator<Element>) bugsMusic.get("rank");
+                    Iterator<Element> artist = (Iterator<Element>) bugsMusic.get("artist");
+                    Iterator<Element> title = (Iterator<Element>) bugsMusic.get("title");
 
                     System.out.println("벅스뮤직 결과 : ");
                     while(rank.hasNext()){
@@ -40,12 +40,16 @@ public class CrawlerView {
                     break;
                 case "2":
                     System.out.println("2-멜론뮤직");
-                    Map<String, ?> map = controller.findBugsMusic(scanner);
-
-
+                    Map<String, ?> melonMusic = controller.findMelonMusic(scanner);
+                    Iterator<Element> melonRank = (Iterator<Element>) melonMusic.get("rank");
+                    Iterator<Element> melonArtist = (Iterator<Element>) melonMusic.get("artist");
+                    Iterator<Element> melonTitle = (Iterator<Element>) melonMusic.get("title");
 
                     System.out.println("멜론뮤직 결과 : ");
-                    System.out.println("위"+"-");
+                    while(melonRank.hasNext()){
+                        System.out.println(melonRank.next().text()+"위"+melonArtist.next().text()+"-"+melonTitle.next().text());
+                    }
+
                     break;
                 case "3":
                     System.out.println("3-ID 검색");

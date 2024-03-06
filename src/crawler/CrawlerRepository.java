@@ -39,6 +39,28 @@ public class CrawlerRepository extends AbstractRepository {
         return map;
     }
 
+    public Map<String,?> saveMelonChart(Map<String,?> paramMap) throws IOException {
+        Document doc = Jsoup.connect("https://www.melon.com/chart/index.htm").timeout(10*1000).get();
+        Elements elements = doc.select("table");
+        Iterator<Element> rank = elements.select("span.rank").iterator();
+        Iterator<Element> title = elements.select("div.ellipsis.rank01").iterator();
+        Iterator<Element> artist = elements.select("div.ellipsis.rank02").iterator();
+
+        Map<String,Iterator<Element>> localMap = new HashMap<>();
+
+        localMap.put("rank", rank);
+        localMap.put("title", title);
+        localMap.put("artist", artist);
+
+        map = localMap;
+
+        return map;
+    }
+
+//
+
+
+
 
 
 
