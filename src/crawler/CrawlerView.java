@@ -47,7 +47,7 @@ public class CrawlerView {
 
                     System.out.println("멜론뮤직 결과 : ");
                     while(melonRank.hasNext()){
-                        System.out.println(melonRank.next().text()+"위"+melonArtist.next().text()+"-"+melonTitle.next().text());
+                        System.out.println(melonRank.next().text()+"위 "+melonArtist.next().text()+" - "+melonTitle.next().text());
                     }
 
                     break;
