@@ -1,10 +1,10 @@
 package user;
 
 import common.AbstractService;
-import common.UtilService;
 import common.UtilServiceImpl;
 import enums.Messenger;
 
+import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,10 +13,14 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 
     private static UserServiceImpl instance = new UserServiceImpl();
     Map<String, User> users;
+    UserRepository repo;
 
     private UserServiceImpl(){
         this.users = new HashMap<>();
+        this.repo = UserRepository.getInstance();
     }
+
+
     public static UserServiceImpl getInstance(){return instance;}
     @Override
     public Messenger save(User user) {
@@ -122,6 +126,26 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     @Override
     public Map<String, ?> getUserMap() {
         return users;
+    }
+
+    @Override
+    public String test() {
+        return repo.test();
+    }
+
+    @Override
+    public List<?> findUsers() throws SQLException {
+        return repo.findUsers();
+    }
+
+    @Override
+    public String createTable() throws SQLException {
+        return repo.createTable();
+    }
+
+    @Override
+    public String deleteTable() throws SQLException {
+        return repo.deleteTable();
     }
 
     @Override

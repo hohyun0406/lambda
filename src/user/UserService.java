@@ -1,8 +1,8 @@
 package user;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface UserService {
     String addUsers();
@@ -13,4 +13,12 @@ public interface UserService {
     List<?> findUsersByJob(String job);
     Map<String, ?> findUsersByJobFromMap(String job);
     Map<String, ?> getUserMap();
+
+    String test();
+
+    List<?> findUsers() throws SQLException;
+
+    String createTable() throws SQLException;
+
+    String deleteTable() throws SQLException;
 }

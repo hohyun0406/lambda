@@ -1,10 +1,12 @@
 package user;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class UserView {
-    public static void main(Scanner scanner) {
+    public static void main(Scanner scanner) throws SQLException {
         UserController controller = new UserController();
         String msg = controller.addUsers();
         System.out.println(" addUsers 결과 : "+msg);
@@ -13,12 +15,15 @@ public class UserView {
                     "1-회원가입\n " +
                     "2-로그인\n " +
                     "3-ID검색\n " +
-                    "4-비번변경\n" +
+                    "4-비번변경\n " +
                     "5-탈퇴\n " +
-                    "6-회원목록\n " +
-                    "7-이름검색\n" +
-                    "8-직업검색\n" +
-                    "9-회원수");
+                    "ls-회원목록\n " +
+                    "7-이름검색\n " +
+                    "8-직업검색\n " +
+                    "9-회원수\n " +
+                    "touch - 테이블생성\n " +
+                    "rm- 테이블삭제\n " +
+                    "");
             switch (scanner.next()){
                 case "0":
                     System.out.println("종료");return;
@@ -34,7 +39,9 @@ public class UserView {
                     break;
                 case "3":
                     System.out.println("3-ID 검색");
-                    System.out.println(controller.getOne(scanner));
+                    //System.out.println(controller.getOne(scanner));
+                    // User u = findOne(scanner.next());
+
                     break;
                 case "4":
                     System.out.println("4-비번변경");
@@ -44,12 +51,11 @@ public class UserView {
                     System.out.println("5-탈퇴");
                     System.out.println(controller.delete(scanner));
                     break;
-                case "6":
-                    System.out.println("6-회원목록");
-                    Map<String, ?> users = controller.getUserMap();
-                    users.forEach((k,v)->{
-                        System.out.printf("아이디: %s, 회원정보: %s", k, v);
-                    });
+                case "ls":
+                    System.out.println("ls-회원목록");
+                    List<?> users = controller.findUsers();
+                    //users.forEach(i -> System.out.println(i));
+
                     break;
                 case "7":
                     System.out.println("7-이름검색");
@@ -68,7 +74,16 @@ public class UserView {
                     String numberOfUsers = controller.count();
                     System.out.println("회원수 "+numberOfUsers);
                     break;
-
+                case "touch":
+                    System.out.println("테이블생성");
+                    controller.createTable();
+                    System.out.println("회원 테이블 생성 성공");
+                    break;
+                case "rm":
+                    System.out.println("테이블삭제");
+                    controller.deleteTable();
+                    System.out.println("회원 테이블 삭제 성공 ");
+                    break;
 
             }
 

@@ -1,5 +1,6 @@
 package user;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -20,9 +21,8 @@ public class UserController {
     public String save(Scanner scanner) {
         service.save(User.builder()
                 .username(scanner.next())
-                .ssn(scanner.next())
                 .address(scanner.next())
-                .phoneNumber(scanner.next())
+                .phone(scanner.next())
                 .password(scanner.next())
                 .build());
         return "회원가입 성공";
@@ -46,9 +46,8 @@ public class UserController {
     public String updatePassword(Scanner scanner) {
         return service.updatePassword(User.builder()
                 .username(scanner.next())
-                .ssn(scanner.next())
                 .address(scanner.next())
-                .phoneNumber(scanner.next())
+                .phone(scanner.next())
                 .password(scanner.next())
                 .build());
     }
@@ -90,4 +89,20 @@ public class UserController {
         return service.getUserMap();
     }
 
+
+    public String test() {
+        return service.test();
+    }
+
+    public List<?> findUsers() throws SQLException {
+        return service.findUsers();
+    }
+
+    public String createTable() throws SQLException {
+        return service.createTable();
+    }
+
+    public String deleteTable() throws SQLException {
+        return service.deleteTable();
+    }
 }

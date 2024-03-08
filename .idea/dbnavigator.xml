@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -16,8 +16,42 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="86dc7a93-c9fc-4ba3-8d2d-b24666f6bcb8">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+    <connection id="c5e54d8e-a9dd-45d9-a392-1e646baba65f">
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[show tables;
+
+CREATE TABLE articles(                               
+  id INT NOT NULL AUTO_INCREMENT,                 
+  title VARCHAR(20) NOT NULL,                          
+  content VARCHAR(100) NULL,                      
+  writer VARCHAR(20) NOT NULL,                                     
+  register_date  VARCHAR(20),                                     
+  CONSTRAINT board_pk PRIMARY KEY(id)             
+);
+
+
+select * from board;
+insert into articles(title, content,writer)
+values ('테스트 제목','테스트글','제임스');
+select * from board;
+commit;
+select * from articles;
+
+rename table board to aticles;
+show tables;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    name VARCHAR(20),
+    phone VARCHAR(20),
+    job VARCHAR(20),
+    height VARCHAR(20),
+    weight VARCHAR(20)
+);
+
+DROP TABLE users;
+DROP TABLE board;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -27,7 +61,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="86dc7a93-c9fc-4ba3-8d2d-b24666f6bcb8" />
+    <connection id="c5e54d8e-a9dd-45d9-a392-1e646baba65f" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -44,15 +78,18 @@
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces />
+  </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="86dc7a93-c9fc-4ba3-8d2d-b24666f6bcb8" active="true" signed="true">
+      <connection id="c5e54d8e-a9dd-45d9-a392-1e646baba65f" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="8.3" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
@@ -67,7 +104,7 @@
           <deprecated-pwd value="cm9kZGI=" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -534,5 +571,9 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
+    <execution-variable-types />
   </component>
 </project>
