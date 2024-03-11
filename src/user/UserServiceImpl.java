@@ -20,8 +20,9 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         this.repo = UserRepository.getInstance();
     }
 
-
     public static UserServiceImpl getInstance(){return instance;}
+
+
     @Override
     public Messenger save(User user) {
         users.put(user.getUsername(), user);
@@ -139,7 +140,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     }
 
     @Override
-    public String createTable() throws SQLException {
+    public Messenger createTable() throws SQLException {
         return repo.createTable();
     }
 

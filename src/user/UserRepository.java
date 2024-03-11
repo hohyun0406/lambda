@@ -1,6 +1,7 @@
 package user;
 
 import article.Article;
+import enums.Messenger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class UserRepository {
         return null;
     }
 
-    public String createTable() throws SQLException {
+    public Messenger createTable() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS users (\n" +
                 "    id INT AUTO_INCREMENT PRIMARY KEY,\n" +
                 "    username VARCHAR(20) NOT NULL,\n" +
@@ -71,13 +72,15 @@ public class UserRepository {
         PreparedStatement pstmt = connection.prepareStatement(sql);
         int ce = pstmt.executeUpdate();
         System.out.println("쿼리의 반환값은" + ce);
+        pstmt.close();
+        connection.close();
         String msg = "";
         if(ce==0){
             msg = "테이블 생성 성공";
         }else{
             msg = "테이블 생성 실패";
         }
-        return msg;
+        return (ce==0) ? "테이블 생성 성공": "테이블 생성 실패";
     }
 
 
@@ -89,9 +92,9 @@ public class UserRepository {
         System.out.println("쿼리의 반환값은 "+ce);
         String msg = "";
         if(ce==0){
-            msg = "테이블 생성 성공";
+            msg = "테이블 삭제 성공";
         }else{
-            msg = "테이블 생성 실패";
+            msg = "테이블 삭제 실패";
         }
         return msg;
     }

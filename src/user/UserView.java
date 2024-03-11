@@ -76,13 +76,11 @@ public class UserView {
                     break;
                 case "touch":
                     System.out.println("테이블생성");
-                    controller.createTable();
-                    System.out.println("회원 테이블 생성 성공");
+                    System.out.println(controller.createTable());
                     break;
                 case "rm":
                     System.out.println("테이블삭제");
-                    controller.deleteTable();
-                    System.out.println("회원 테이블 삭제 성공 ");
+                    System.out.println(controller.deleteTable());
                     break;
 
             }

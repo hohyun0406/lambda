@@ -1,5 +1,7 @@
 package user;
 
+import enums.Messenger;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -98,7 +100,7 @@ public class UserController {
         return service.findUsers();
     }
 
-    public String createTable() throws SQLException {
+    public Messenger createTable() throws SQLException {
         return service.createTable();
     }
 
