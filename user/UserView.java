@@ -81,7 +81,10 @@ public class UserView {
                     System.out.println("테이블삭제");
                     System.out.println(controller.deleteTable());
                     break;
-
+//                case "baseball" :
+//                    System.out.println("야구테이블생성");
+//                    System.out.println(controller.createBaseballTable());
+//                    break;
             }
 
         }

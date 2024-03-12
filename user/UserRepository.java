@@ -11,8 +11,7 @@ import static com.rod.api.enums.Messenger.SUCCESS;
 
 public class UserRepository {
     private static UserRepository instance;
-    private PreparedStatement pstmt;
-    private ResultSet rs;
+
 
     static {
         try {
@@ -21,12 +20,11 @@ public class UserRepository {
             throw new RuntimeException(e);
         }
     }
-
+    private PreparedStatement pstmt;
+    private ResultSet rs;
     private Connection connection;
 
     private UserRepository() throws SQLException {
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/roddb",
                 "roddb",
@@ -84,8 +82,6 @@ public class UserRepository {
         PreparedStatement pstmt = connection.prepareStatement(sql);
         int ce = pstmt.executeUpdate();
         System.out.println("쿼리의 반환값은" + ce);
-        pstmt.close();
-        connection.close();
         return (ce==0) ? SUCCESS: FAIL;
     }
 
@@ -104,4 +100,7 @@ public class UserRepository {
         }
         return msg;
     }
+
+
+
 }
