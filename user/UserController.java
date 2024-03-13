@@ -104,7 +104,7 @@ public class UserController {
         return service.createTable();
     }
 
-    public String deleteTable() throws SQLException {
+    public Messenger deleteTable() throws SQLException {
         return service.deleteTable();
     }
 

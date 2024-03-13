@@ -86,19 +86,14 @@ public class UserRepository {
     }
 
 
-    public String deleteTable() throws SQLException {
+    public Messenger deleteTable() throws SQLException {
         String sql = "DROP TABLE IF EXISTS users";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         int ce = pstmt.executeUpdate();
 
         System.out.println("쿼리의 반환값은 "+ce);
-        String msg = "";
-        if(ce==0){
-            msg = "테이블 삭제 성공";
-        }else{
-            msg = "테이블 삭제 실패";
-        }
-        return msg;
+
+        return (ce==0) ? Messenger.SUCCESS: Messenger.FAIL;
     }
 
 
