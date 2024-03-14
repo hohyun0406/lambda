@@ -10,15 +10,21 @@ import java.util.Scanner;
 
 public class UserController {
 
+    private static UserController instance = new UserController();
+
+
+    public static UserController getInstance() {
+        return instance;
+    }
+
+
     UserServiceImpl service;
 
-    public UserController() {
-        this.service = UserServiceImpl.getInstance();
-    }
+    private UserController() {this.service = UserServiceImpl.getInstance();}
 
-    public String addUsers() {
-        return service.addUsers();
-    }
+    public String addUsers() {return service.addUsers();}
+
+
 
     public String save(Scanner scanner) {
         service.save(User.builder()

@@ -1,21 +1,22 @@
 package com.rod.api;
 
-import com.rod.api.account.AccountView;
-import com.rod.api.article.ArticleView;
-import com.rod.api.board.BoardView;
-import com.rod.api.crawler.CrawlerView;
-import com.rod.api.enums.Navigation;
-import com.rod.api.user.UserView;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import com.rod.api.enums.NavigationOfFuncton;
+import com.rod.api.enums.NavigationOfPredicate;
+
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        while(Navigation.navigate(scan));
+        Scanner sc = new Scanner(System.in);
+
+//        NavigationOfConsumer.select(scan);
+        //while ();
+//        String stringFlag = NavigationOfSupplier.select(scan);
+        //while(stringFlag.equals("x"));
+        while(!NavigationOfFuncton.select(sc).equals("x"));
+
+
+//        while(NavigationOfPredicate.navigate(sc));
     }
 }
