@@ -11,7 +11,6 @@ public class User {
     private String password;
     private String name;
     private String phone;
-    private Long addressId;
     private String job;
     private double height;
     private double weight;

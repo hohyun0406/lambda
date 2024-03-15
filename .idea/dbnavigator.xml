@@ -17,7 +17,10 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c5e54d8e-a9dd-45d9-a392-1e646baba65f">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[show tables;
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM menus
+
+show tables;
+
 
 DROP TABLE IF EXISTS articles, player, schedule, stadium, team;
 
@@ -27,7 +30,13 @@ FROM team
 ORDER BY team_name ASC;
 --002. 플레이어의 포지션 종류를 나열하시오. 단 중복은 제거하고, 포지션이 없으면 빈공간으로 두시오.
 SELECT DISTINCT POSITION
-FROM player;]]></console>
+FROM player;
+
+
+desc menus;
+select * from menus;
+
+select * from menus where category = 'navigate';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

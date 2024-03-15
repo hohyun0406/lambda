@@ -9,8 +9,8 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class UserController {
-
     private static UserController instance = new UserController();
+    private final UserServiceImpl service;
 
 
     public static UserController getInstance() {
@@ -18,7 +18,6 @@ public class UserController {
     }
 
 
-    UserServiceImpl service;
 
     private UserController() {this.service = UserServiceImpl.getInstance();}
 

@@ -5,15 +5,20 @@ import com.rod.api.article.Article;
 import com.rod.api.article.ArticleView;
 import com.rod.api.board.BoardView;
 import com.rod.api.crawler.CrawlerView;
+import com.rod.api.menu.Menu;
 import com.rod.api.user.UserView;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 public enum NavigationOfFuncton {
+    MENU("m", sc->{
+        Menu.main(sc);return "";
+    }),
     USER("u", sc-> {
         try {
             UserView.main(sc);
@@ -49,6 +54,9 @@ public enum NavigationOfFuncton {
     }
 
     public static String select(Scanner sc) {
+
+        List<String> ls = null;
+
         System.out.println("=== x-Exit " +
                 "u-User " +
                 "a-Article " +
